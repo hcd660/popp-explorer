@@ -1,0 +1,21 @@
+node_modules
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
+
+.idea
+contracts/Minter.sol
+scripts/deploy.ts
+scripts/deployMinter.ts
+scripts/mint.ts
+scripts/verifyContract.ts
+scripts/grantMintRole.ts
+scripts/deployDEMETokenERC721-polygon.ts
+scripts/grantMintRole-polygon.ts
+scripts/verifyContract-polygon.ts

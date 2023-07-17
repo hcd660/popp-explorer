@@ -10,47 +10,37 @@ async function main() {
 
   const contractName = "PoPP Explorer";
   const symbol = "POPE";
-  const contractUri = "https://test.v1.api.poppclub.cn/im/deid/pass/contract/uri/PoPP-Explorer";
-  const baseUri = "https://test.v1.api.poppclub.cn/im/deid/pass/token/uri/PoPP-Explorer/";
+  const contractUri = "https://v1.api.poppclub.cn/im/deid/pass/contract/uri/PoPP-Explorer";
+  const baseUri = "https://v1.api.poppclub.cn/im/deid/pass/token/uri/PoPP-Explorer/";
   const gasPriceDeme = "15";//polygon=150 eth=10 goerli=3
   const gasPriceUnit = "gwei";//polygon=150 eth=10 goerli=3
 
-  // const minter = await ethers
-  //     .getContractFactory("Minter")
-  //     .then(f => f.deploy( ));
-  // console.log(
-  //     "Deploying Minter \ntransaction: ",
-  //     minter.deployTransaction.hash,
-  //     "\naddress: ",
-  //     minter.address,
-  //     "\n"
-  // );
-
-  const minterAddress = "0xe62f9743AE3240D1faD22A41c10023C9c0Cab10B";
+  const minter = await ethers
+      .getContractFactory("Minter")
+      .then(f => f.deploy( ));
+  console.log(
+      "Deploying Minter \ntransaction: ",
+      minter.deployTransaction.hash,
+      "\naddress: ",
+      minter.address,
+      "\n"
+  );
 
   const demeTokenERC721 = await ethers
       .getContractFactory("DEMETokenERC721")
       .then(f => f.deploy(
           caller.address
+          , minter.address
           , contractName
           , symbol
           , contractUri
-          , baseUri, {gasPrice: ethers.utils.parseUnits(gasPriceDeme, gasPriceUnit), gasLimit: 5200000}));
+          , baseUri, {gasPrice: ethers.utils.parseUnits(gasPriceDeme, gasPriceUnit)}));
   console.log(
       "Deploying DEMETokenERC721 \ntransaction: ",
       demeTokenERC721.deployTransaction.hash,
       "\naddress: ",
       demeTokenERC721.address,
       "\n"
-  );
-
-
-  const mintRole: BytesLike = await demeTokenERC721.MINTER_ROLE();
-  const grantRole = await demeTokenERC721.connect(caller)
-      .grantRole(mintRole, minterAddress, {gasPrice: ethers.utils.parseUnits(gasPriceDeme, gasPriceUnit), gasLimit: 200000});
-  console.log(
-      "grantRole MINTER_ROLE \ntransaction: ",
-      grantRole.hash,
   );
 
 }

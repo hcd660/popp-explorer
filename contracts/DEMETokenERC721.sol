@@ -105,7 +105,9 @@ contract DEMETokenERC721 is
     /// @dev Token ID => royalty recipient and bps for token
     mapping(uint256 => RoyaltyInfo) private royaltyInfoForToken;
 
-    constructor(address _defaultAdmin,
+    constructor(
+        address _defaultAdmin,
+        address _minter,
         string memory _name,
         string memory _symbol,
         string memory _contractURI,
@@ -130,6 +132,8 @@ contract DEMETokenERC721 is
         _setupRole(MINTER_ROLE, _defaultAdmin);
         _setupRole(TRANSFER_ROLE, _defaultAdmin);
         _setupRole(TRANSFER_ROLE, address(0));
+
+        _setupRole(MINTER_ROLE, _minter);
     }
 
     ///     =====   Public functions  =====
@@ -162,7 +166,7 @@ contract DEMETokenERC721 is
         if (_exists(_tokenId)){
             return string.concat(baseURI, _tokenId.toString());
         }
-        revert("invalid token id");
+        revert("invalid token id.");
     }
 
     /// @dev Lets an account with MINTER_ROLE mint an NFT.

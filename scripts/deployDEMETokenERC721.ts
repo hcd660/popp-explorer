@@ -11,26 +11,14 @@ async function main() {
   const contractName = "PoPP Explorer";
   const symbol = "POPE";
   const contractUri = "https://v1.api.poppclub.cn/im/deid/pass/contract/uri/PoPP-Explorer";
-  const baseUri = "https://v1.api.poppclub.cn/im/deid/pass/token/uri/PoPP-Explorer/";
+  const baseUri = "https://v1.api.poppclub.cn/im/deid/pass/metadata/PoPP-Explorer/";
   const gasPriceDeme = "15";//polygon=150 eth=10 goerli=3
   const gasPriceUnit = "gwei";//polygon=150 eth=10 goerli=3
 
-  const minter = await ethers
-      .getContractFactory("Minter")
-      .then(f => f.deploy( ));
-  console.log(
-      "Deploying Minter \ntransaction: ",
-      minter.deployTransaction.hash,
-      "\naddress: ",
-      minter.address,
-      "\n"
-  );
-
   const demeTokenERC721 = await ethers
-      .getContractFactory("DEMETokenERC721")
+      .getContractFactory("PoPPExplorer")
       .then(f => f.deploy(
           caller.address
-          , minter.address
           , contractName
           , symbol
           , contractUri
@@ -62,6 +50,7 @@ main().catch((error) => {
 });
 
 
+// npx hardhat run scripts/deployDEMETokenERC721.ts --network polygon
 // npx hardhat run scripts/deployDEMETokenERC721.ts --network goerli
 // npx hardhat run scripts/deployDEMETokenERC721.ts --network mainnet
 

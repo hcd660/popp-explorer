@@ -685,6 +685,22 @@ function setApprovalForAll(address operator, bool approved) external nonpayable
 | operator | address | undefined
 | approved | bool | undefined
 
+### setBaseURI
+
+```solidity
+function setBaseURI(string _uri) external nonpayable
+```
+
+
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| _uri | string | undefined
+
 ### setContractURI
 
 ```solidity

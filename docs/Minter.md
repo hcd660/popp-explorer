@@ -82,25 +82,6 @@ function mintDeme(address _demeAddress, address _nftAddress, uint256 _start, uin
 | _start | uint256 | undefined
 | _end | uint256 | undefined
 
-### mintOk
-
-```solidity
-function mintOk(address _okAddress, address _nftAddress, uint256 _start, uint256 _end) external nonpayable
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| _okAddress | address | undefined
-| _nftAddress | address | undefined
-| _start | uint256 | undefined
-| _end | uint256 | undefined
-
 ### okCount
 
 ```solidity

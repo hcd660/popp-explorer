@@ -34,7 +34,7 @@ import "@openzeppelin/contracts-upgradeable/interfaces/IERC2981Upgradeable.sol";
 
 import "./interfaces/IContract.sol";
 
-contract DEMETokenERC721 is
+contract PoPPExplorer is
     Initializable,
     IContract,
     IOwnable,
@@ -107,7 +107,6 @@ contract DEMETokenERC721 is
 
     constructor(
         address _defaultAdmin,
-        address _minter,
         string memory _name,
         string memory _symbol,
         string memory _contractURI,
@@ -132,8 +131,6 @@ contract DEMETokenERC721 is
         _setupRole(MINTER_ROLE, _defaultAdmin);
         _setupRole(TRANSFER_ROLE, _defaultAdmin);
         _setupRole(TRANSFER_ROLE, address(0));
-
-        _setupRole(MINTER_ROLE, _minter);
     }
 
     ///     =====   Public functions  =====

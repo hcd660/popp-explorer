@@ -10,10 +10,10 @@
 
 ## Methods
 
-### mintTo
+### safeTransferFrom
 
 ```solidity
-function mintTo(address to) external nonpayable returns (uint256)
+function safeTransferFrom(address from, address to, uint256 tokenId) external nonpayable
 ```
 
 
@@ -24,13 +24,9 @@ function mintTo(address to) external nonpayable returns (uint256)
 
 | Name | Type | Description |
 |---|---|---|
+| from | address | undefined
 | to | address | undefined
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | uint256 | undefined
+| tokenId | uint256 | undefined
 
 
 

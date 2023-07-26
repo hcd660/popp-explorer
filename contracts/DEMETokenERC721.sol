@@ -277,6 +277,10 @@ contract DEMETokenERC721 is
         contractURI = _uri;
     }
 
+    function setBaseURI(string calldata _uri) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        baseURI = _uri;
+    }
+
     ///     =====   Getter functions    =====
 
     /// @dev Returns the platform fee bps and recipient.
